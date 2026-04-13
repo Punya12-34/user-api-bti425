@@ -42,7 +42,7 @@ app.post("/api/user/register", (req, res) => {
     .then((msg) => {
       res.json({ "message": msg });
     }).catch((msg) => {
-      res.status(422).json({ "message": msg });
+      res.status(422).json({ "message": msg.message || msg });
     });
 });
 
@@ -55,7 +55,7 @@ app.post("/api/user/login", (req, res) => {
       );
       res.json({ "message": "login successful", "token": token });
     }).catch(msg => {
-      res.status(422).json({ "message": msg });
+      res.status(422).json({ "message": msg.message || msg });
     });
 });
 
